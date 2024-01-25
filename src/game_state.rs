@@ -1,13 +1,22 @@
 pub static MAX_LIVES: u8 = 4;
 pub static MAX_SHELLS: u8 = 8;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Turn {
+	Dealer,
+	Player,
+}
+
 /// Relevant game state information
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct GameState {
-	dealer_lives: u8,
-	num_blank: u8,
-	num_live: u8,
-	player_lives: u8,
+	pub dealer_lives: u8,
+	pub lose: bool,
+	pub num_blank: u8,
+	pub num_live: u8,
+	pub player_lives: u8,
+	pub turn: Turn,
+	pub win: bool,
 }
 
 impl GameState {
